@@ -2,26 +2,42 @@
 # 💻 Shadowcode
 📚 Education based IDE for learning software development
 
-## Get Started
+## 👩‍💻 Get Started
+There are a variety of commands to use during the development process. 
+___
 
-🖥 Dev Desktop
+### Development Server
+
+🖥 Desktop
 ```
 yarn tauri dev
 ```
 
-🌐 Dev Web
+🌐 Web
 ```
 yarn dev
 ```
 
-🖥 Build Desktop
+### Build Application
+
+🖥 Desktop
 
 ``` 
 yarn tauri build
 ```
 
-🌐 Build Web
+🌐 Web
 
 ``` 
 yarn build
 ```
+
+### Commit Work
+To maintain consistent commit messages we will be using commitizen along with cz-emoji. 
+A script has been added for convenience. 
+
+```
+yarn commit
+```
+
+![commit image](./assets/commit.png "commit")
