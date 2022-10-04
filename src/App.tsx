@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { ThemeProvider } from "styled-components";
-import { defaultTheme, monokaiTheme } from "./themes";
+import { sendNotification } from "@tauri-apps/api/notification";
 
 import { Button, Header } from "./components";
+import { defaultTheme, monokaiTheme } from "./themes";
 
 import styled from "styled-components";
 
@@ -18,6 +19,7 @@ function App(): JSX.Element {
 
   const handleThemeChange = () => {
     setTheme(monokaiTheme);
+    sendNotification({ title: "Theme Updated!" });
   };
 
   return (
