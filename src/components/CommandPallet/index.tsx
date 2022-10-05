@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import { commandPalletViewState } from "../../recoil/ui_states";
 // @ts-ignore
@@ -18,6 +19,7 @@ const Container = styled.div`
   overflow: hidden;
   z-index: 20;
   outline: none;
+  opacity: ${props => (props.visible ? 1 : 0)};
 `;
 
 const Row = styled.div`
@@ -29,9 +31,11 @@ const PalletFilter = styled.div`
   font-size: 16px;
   line-height: 20px;
   text-align: center;
-  padding: 5px;
+  padding: 5px 10px;
   cursor: pointer;
   color: ${props => props.theme.palette.primary.contrastText};
+  background-color: ${props =>
+    props.active ? props.theme.background : "transparent"};
 
   &:hover {
     background-color: ${props => props.theme.background};
@@ -50,14 +54,41 @@ const Input = styled.input`
   }
 `;
 
-export default (): JSX.Element => {
+const CommandPallet = (): JSX.Element => {
   const visible = useRecoilValue(commandPalletViewState);
-  return visible ? (
-    <Container>
-      <Row>
-        <PalletFilter>All</PalletFilter>
-        <PalletFilter>Files</PalletFilter>
-      </Row>
+  const [selectedFilter, setSelectedFilter] = useState("All");
+  const [command, setCommand] = useState("");
+
+  useEffect(
+    function() {
+      if (command[0] === ">") {
+        return setSelectedFilter("Commands");
+      }
+      if (command[0] === "@") {
+        return setSelectedFilter("Files");
+      }
+      return setSelectedFilter("All");
+    },
+    [command]
+  );
+
+  const generateFilters = (): JSX.Element[] => {
+    return ["All", "Files", "Commands"].map((filter, index) => {
+      return (
+        <PalletFilter
+          onClick={() => setSelectedFilter(filter)}
+          active={filter === selectedFilter}
+          key={"filter" + index}
+        >
+          {filter}
+        </PalletFilter>
+      );
+    });
+  };
+
+  return (
+    <Container visible={visible}>
+      <Row>{generateFilters()}</Row>
       <Row>
         <Search
           style={{
@@ -68,10 +99,16 @@ export default (): JSX.Element => {
             fill: "#FFFFFFAA"
           }}
         />
-        <Input type={"text"} autoFocus={true} />
+        <Input
+          type={"text"}
+          autoFocus={true}
+          onChange={e => setCommand(e.target.value)}
+          value={command}
+        />
       </Row>
+      <Row>{/* TODO add filters here once available  */}</Row>
     </Container>
-  ) : (
-    <></>
   );
 };
+
+export default CommandPallet;

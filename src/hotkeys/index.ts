@@ -6,4 +6,8 @@ export default e => {
   if ((e.metaKey || e.ctrlKey) && e.code === "KeyP") {
     toggleCommandPalletView();
   }
+
+  if (e.code === "Escape") {
+    toggleCommandPalletView(false);
+  }
 };
