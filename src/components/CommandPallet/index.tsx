@@ -7,7 +7,7 @@ import { ReactComponent as Search } from "../../assets/search.svg";
 import styled from "styled-components";
 
 const Container = styled.div`
-  position: absolute;
+  position: fixed;
   left: 50%;
   top: 20%;
   width: 40vw;
@@ -93,8 +93,8 @@ const CommandPallet = (): JSX.Element => {
         <Search
           style={{
             backgroundColor: "#00000055",
-            height: "20px",
-            width: "20px",
+            height: "25px",
+            width: "25px",
             padding: "10px",
             fill: "#FFFFFFAA"
           }}

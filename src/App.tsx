@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
-import { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import { sendNotification } from "@tauri-apps/api/notification";
 
-import { Button, Header, CommandPallet } from "./components";
+import { Button, Header, CommandPallet, LeftBar } from "./components";
 import { defaultTheme, monokaiTheme } from "./themes";
 import hotkeyHandler from "./hotkeys";
-
-import styled from "styled-components";
 
 const StyledContainer = styled.div`
   background-color: ${props => props.theme.background};
   height: 100%;
   display: grid;
+  grid-template-columns: 50px 1fr;
+  grid-template-rows: 1fr;
   align-content: center;
 `;
 
@@ -35,11 +35,14 @@ function App(): JSX.Element {
     <ThemeProvider theme={theme}>
       <StyledContainer className="App">
         <CommandPallet />
-        <Header text={"Welcome to Shadowcode"} />
-        <Button
-          label={"Click Me to change theme"}
-          onClick={handleThemeChange}
-        />
+        <LeftBar />
+        <div style={{ padding: "100px" }}>
+          <Header text={"Welcome to Shadowcode"} />
+          <Button
+            label={"Click Me to change theme"}
+            onClick={handleThemeChange}
+          />
+        </div>
       </StyledContainer>
     </ThemeProvider>
   );
