@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useRecoilValue } from "recoil";
-import { commandPalletViewState } from "../../recoil/ui_states";
+import { commandPalletViewState } from "@recoil/ui_states";
 // @ts-ignore
-import { ReactComponent as Search } from "../../assets/search.svg";
+import { ReactComponent as Search } from "@assets/search.svg";
 
 import styled from "styled-components";
 

@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { ReactComponent as Folder } from "../../assets/folder.svg";
-import { ReactComponent as Clipboard } from "../../assets/clipboard.svg";
+import { ReactComponent as Folder } from "@assets/folder.svg";
+import { ReactComponent as Clipboard } from "@assets/clipboard.svg";
 
 const Container = styled.div`
   height: 100%;

@@ -1,11 +1,18 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import viteSvgr from "vite-plugin-svgr";
+import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react({ include: "**/*.tsx" }), viteSvgr()],
-
+  resolve: {
+    alias: {
+      "@components": path.resolve(__dirname, "./src/components"),
+      "@assets": path.resolve(__dirname, "./src/assets"),
+      "@recoil": path.resolve(__dirname, "./src/recoil")
+    }
+  },
   // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
   // prevent vite from obscuring rust errors
   clearScreen: false,

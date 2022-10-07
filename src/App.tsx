@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { sendNotification } from "@tauri-apps/api/notification";
 
-import { Button, Header, CommandPallet, LeftBar } from "./components";
+import { Button, Header, CommandPallet, LeftBar } from "@components";
 import { defaultTheme, monokaiTheme } from "./themes";
 import hotkeyHandler from "./hotkeys";
 
