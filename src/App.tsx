@@ -9,9 +9,7 @@ import hotkeyHandler from "./hotkeys";
 const StyledContainer = styled.div`
   background-color: ${props => props.theme.background};
   height: 100%;
-  display: grid;
-  grid-template-columns: 50px 1fr;
-  grid-template-rows: 1fr;
+  display: flex;
   align-content: center;
 `;
 
@@ -36,7 +34,7 @@ function App(): JSX.Element {
       <StyledContainer className="App">
         <CommandPallet />
         <LeftBar />
-        <div style={{ padding: "100px" }}>
+        <div style={{ padding: "100px", flex: 1 }}>
           <Header text={"Welcome to Shadowcode"} />
           <Button
             label={"Click Me to change theme"}
